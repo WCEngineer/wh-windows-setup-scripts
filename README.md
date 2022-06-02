@@ -1,4 +1,7 @@
 
+# About this fork
+This fork was created to facilitate the automated deployment and installation of programs on new or reinstalled workstations at Whittet-Higgins.
+
 # About this project
 The goal of this project is to provide a central place to share ideas for streamlining dev box setup and provide sample scripts for common dev scenarios. It's likely you will want to take the scripts here and modify them to fit your particular needs. When you make those changes if you think others would benefit please consider submitting a PR. Before you contribute please see the [Contribution Guidelines](CONTRIBUTING.md).
 
@@ -7,7 +10,7 @@ These scripts leverage two popular open source projects.
 - Chocolatey [chocolatey.org](http://chocolatey.org)
 
 Boxstarter is a wrapper for Chocolatey and includes features like managing reboots for you. We're using the Boxstarter web launcher to start the installation process:<br/>
-https://boxstarter.org/Learn/WebLauncher
+https://boxstarter.org/Learn/WebLauncher~~
 
 ## Project structure
 The script code is organized in a hierarchy
@@ -34,18 +37,10 @@ To run a recipe script, click a link in the table below from your target machine
 
 |Click link to run  |Description  |
 |---------|---------|
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/Microsoft/windows-dev-box-setup-scripts/master/dev_app.ps1'>Full Desktop App</a>     | Windows Desktop App Development (Visual Studio, Windows SDK, C++, UWP, .NET (WPF and Winforms)) |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/Microsoft/windows-dev-box-setup-scripts/master/dev_app_desktop_uwp.ps1'>UWP Desktop App</a>     | Windows Desktop App Development (Visual Studio, Windows SDK, UWP) |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/Microsoft/windows-dev-box-setup-scripts/master/dev_app_desktop_.NET.ps1'>.NET Desktop App</a>     | Windows Desktop App Development (Visual Studio, Windows SDK, .NET (WPF and Winforms)) |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/Microsoft/windows-dev-box-setup-scripts/master/dev_app_desktop_cplusplus.ps1'>C++ Desktop App</a>     | Windows Desktop App Development (Visual Studio, Windows SDK, C++) |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/Microsoft/windows-dev-box-setup-scripts/master/dev_web.ps1'>Web</a> | Web (VS Code, WSL, Multiple Browsers)        |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/Microsoft/windows-dev-box-setup-scripts/master/dev_web_nodejs.ps1'>Web NodeJS</a>     | Web Dev with NodeJS (Web + NodeJS LTS)¹        |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/Microsoft/windows-dev-box-setup-scripts/master/dev_ml_windows.ps1'>Machine Learning Windows</a>| Machine Learning with only Windows native tools        |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/Microsoft/windows-dev-box-setup-scripts/master/dev_ml_wsl.ps1'>Machine Learning Linux</a>| Machine Learning with Linux tools running on WSL        |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/Microsoft/windows-dev-box-setup-scripts/master/devops_azure.ps1'>DevOps Azure</a>| Client setup for DevOps with Azure      |
-|     | Xamarin (Visual Studio, Xamarin, Android SDK) |
-|     | Containers (Docker, Kubernetes, etc...)        |
-|     | Submit a PR with a recommended configuration!        |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Office</a>     | Whittet-Higgins Office |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Shipping</a>     | Whittet-Higgins Shipping |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Gauge Room</a>     | Whittet-Higgins Gauge Room |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_engineer.ps1'>Whittet-Higgins Engineer</a>     | Whittet-Higgins Engineer |
 
 **Notes:**  
 1. If you are using WSL there's a followup step we recommend after running the setup script.  When the script finishes you will only have a root user with a blank password. You should  manually create a non-root user via `$ sudo adduser [USERNAME] sudo` 
