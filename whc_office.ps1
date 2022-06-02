@@ -1,6 +1,6 @@
 # Description: Boxstarter Script
 # Author: Microsoft
-# Common settings for Whittet-Higgins workstations
+# Common settings for Whittet-Higgins office workstations
 
 If ($Boxstarter.StopOnPackageFailure) { $Boxstarter.StopOnPackageFailure = $false }
 
@@ -41,12 +41,20 @@ executeScript 'PackageManagement.ps1';
 executeScript 'ChocolateyExtensions.ps1';
 executeScript 'ChocolateyGUI.ps1';
 
+#--- Graphics Driver Support
+executeScript 'NvidiaGraphics.ps1';
+
+#--- Setting up programs for typical every-day use
+executeScript 'Browsers.ps1';
+executeScript 'OfficeTools.ps1';
+executeScript 'PasswordManager.ps1';
+executeScript 'FileAndStorageUtils'
+
 #--- Windows Privacy Settings ---
 executeScript 'PrivacySettings.ps1';
 
 #--- Whittet-Higgins Custom Setup ---
 executeScript 'DisableIPv6.ps1';
-executeScript 'Workstation.ps1';
 
 Enable-UAC
 Enable-MicrosoftUpdate

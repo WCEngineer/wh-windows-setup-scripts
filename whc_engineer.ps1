@@ -31,7 +31,7 @@ function executeScript {
 
 #--- Setting up Windows ---
 executeScript "SystemConfiguration.ps1";
-# executeScript "FileExplorerSettings.ps1";
+executeScript "FileExplorerSettings.ps1";
 executeScript "RemoveDefaultApps.ps1";
 executeScript "CommonDevTools.ps1";
 
@@ -43,12 +43,21 @@ executeScript 'PackageManagement.ps1';
 executeScript 'ChocolateyExtensions.ps1';
 executeScript 'ChocolateyGUI.ps1';
 
+#--- Graphics Driver Support
+executeScript 'NvidiaGraphics.ps1';
+
+#--- Setting up programs for typical every-day use
+executeScript 'Browsers.ps1';
+executeScript 'OfficeTools.ps1';
+executeScript 'PasswordManager.ps1';
+executeScript 'FileAndStorageUtils'
+
 #--- Windows Privacy Settings ---
 executeScript 'PrivacySettings.ps1';
 
 #--- Whittet-Higgins Custom Setup ---
 executeScript 'DisableIPv6.ps1';
-executeScript 'Workstation.ps1';
+
 executeScript 'Engineer.ps1';
 
 Enable-UAC
