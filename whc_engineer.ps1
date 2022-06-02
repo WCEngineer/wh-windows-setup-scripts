@@ -58,8 +58,51 @@ executeScript 'PrivacySettings.ps1';
 #--- Whittet-Higgins Custom Setup ---
 executeScript 'DisableIPv6.ps1';
 
-executeScript 'Engineer.ps1';
+#--- Tools ---
+#--- Installing VS and VS Code with Git
+# See this for install args: https://chocolatey.org/packages/VisualStudio2017Community
+# https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-community
+# https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio#list-of-workload-ids-and-component-ids
+# visualstudio2017community
+# visualstudio2017professional
+# visualstudio2017enterprise
 
+choco install -y visualstudio2017community --package-parameters="'--add Microsoft.VisualStudio.Component.Git'"
+Update-SessionEnvironment #refreshing env due to Git install
+
+#--- UWP Workload and installing Windows Template Studio ---
+choco install -y visualstudio2017-workload-azure
+choco install -y visualstudio2017-workload-universal
+choco install -y visualstudio2017-workload-manageddesktop
+choco install -y visualstudio2017-workload-nativedesktop
+
+#--- Web Dev Tools ---
+code --install-extension msjsdiag.debugger-for-chrome
+code --install-extension msjsdiag.debugger-for-edge
+
+RefreshEnv;
+Start-Sleep -Seconds 1;
+
+#--- Microsoft WebDriver ---
+choco install -y microsoftwebdriver
+
+RefreshEnv;
+Start-Sleep -Seconds 1;
+
+#--- Web NodeJS Tools ---
+choco install -y nodejs-lts # Node.js LTS, Recommended for most users
+# choco install -y nodejs # Node.js Current, Latest features
+choco install -y visualstudio2017buildtools
+choco install -y visualstudio2017-workload-vctools
+choco install -y python2 # Node.js requires Python 2 to build native modules
+
+RefreshEnv;
+Start-Sleep -Seconds 1;
+
+#--- William Collins Engineer Tools ---
+executeScript 'WCEngineer.ps1';
+
+#--- reenabling critial items ---
 Enable-UAC
 Enable-MicrosoftUpdate
 Install-WindowsUpdate -acceptEula
