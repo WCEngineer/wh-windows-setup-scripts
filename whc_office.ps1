@@ -56,6 +56,7 @@ executeScript 'PrivacySettings.ps1';
 #--- Whittet-Higgins Custom Setup ---
 executeScript 'DisableIPv6.ps1';
 
+#--- reenabling critial items ---
 Enable-UAC
 Enable-MicrosoftUpdate
 Install-WindowsUpdate -acceptEula
