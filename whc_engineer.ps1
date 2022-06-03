@@ -60,7 +60,7 @@ executeScript 'ChocolateyGUI.ps1';
 executeScript 'Browsers.ps1';
 executeScript 'OfficeTools.ps1';
 executeScript 'PasswordManager.ps1';
-executeScript 'FileAndStorageUtils'
+executeScript 'FileAndStorageUtils.ps1'
 
 #--- Windows Privacy Settings ---
 executeScript 'PrivacySettings.ps1';
