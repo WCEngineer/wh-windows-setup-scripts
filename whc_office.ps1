@@ -29,6 +29,11 @@ function executeScript {
 	Start-Sleep -Seconds 1;
 }
 
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+
+#--- Powershell Module Repository
+Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+
 #--- Setting up Windows ---
 executeScript "FileExplorerSettings.ps1";
 executeScript "RemoveDefaultApps.ps1";
