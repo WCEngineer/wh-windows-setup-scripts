@@ -37,10 +37,10 @@ To run a recipe script, click a link in the table below from your target machine
 
 |Click link to run  |Description  |
 |---------|---------|
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Office</a>     | Whittet-Higgins Office |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Shipping</a>     | Whittet-Higgins Shipping |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Gauge Room</a>     | Whittet-Higgins Gauge Room |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_engineer.ps1'>Whittet-Higgins Engineer</a>     | Whittet-Higgins Engineer |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Office</a>     | Automated Windows setup for office workstations |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Shipping</a>     | Automated Windows setup for shipping department workstations |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Gauge Room</a>     | Automated Windows setup for gauge room workstations |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_engineer.ps1'>Whittet-Higgins Engineer</a>     | Automated Windows setup for engineering workstations |
 
 **Notes:**  
 1. If you are using WSL there's a followup step we recommend after running the setup script.  When the script finishes you will only have a root user with a blank password. You should  manually create a non-root user via `$ sudo adduser [USERNAME] sudo` 
