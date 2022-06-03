@@ -58,36 +58,36 @@ refreshenv
 		Set-Content -Path $PROFILE -Value ($ProfileString, (Get-Content $PROFILE))
 	}
 
-	#--- Install & Configure the Powerline Modules
-	try {
-		if (([Security.Principal.WindowsPrincipal] `
-					[Security.Principal.WindowsIdentity]::GetCurrent() `
-			).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-			Write-Host 'Installing Oh-My-Posh - [Dependencies for Powerline]'
-			winget install --id=JanDeDobbeleer.OhMyPosh --exact --silent --accept-package-agreements --accept-source-agreements
-			refreshenv
-		}
-		[System.Environment]::SetEnvironmentVariable('POSH_THEMES_PATH', '~\AppData\Local\Programs\oh-my-posh\themes')
-		refreshenv
-		Write-Host 'Appending Configuration for Powerline to PowerShell Profile...'
-		$PowerlineProfile = @(
-			'# Dependencies for powerline',
-			'oh-my-posh --init --shell pwsh --config $env:POSH_THEMES_PATH/microverse-power.omp.json | Invoke-Expression'
-		)
-		if (-not(Select-String -Pattern $PowerlineProfile[0] -Path $PROFILE )) {
-			Write-Output 'Attempting to add the following lines to $PROFILE :' | Write-Debug
-			Write-Output $PowerlineProfile | Write-Debug
-			Add-Content -Path $PROFILE -Value $PowerlineProfile
-		}
-		# Install additional Powerline-related packages via chocolatey
-		# choco install -y poshgit
-		# choco install -y posh-github
-		# refreshenv
-	} catch {
-		Write-Host  'Powerline failed to install' | Write-Warning
-		Write-Host ' See the log for details (' $Boxstarter.Log ').' | Write-Debug
-		# Move on if Powerline install fails due to error
-	}
+	##--- Install & Configure the Powerline Modules
+	#try {
+	#	if (([Security.Principal.WindowsPrincipal] `
+	#				[Security.Principal.WindowsIdentity]::GetCurrent() `
+	#		).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+	#		Write-Host 'Installing Oh-My-Posh - [Dependencies for Powerline]'
+	#		winget install --id=JanDeDobbeleer.OhMyPosh --exact --silent --accept-package-agreements --accept-source-agreements
+	#		refreshenv
+	#	}
+	#	[System.Environment]::SetEnvironmentVariable('POSH_THEMES_PATH', '~\AppData\Local\Programs\oh-my-posh\themes')
+	#	refreshenv
+	#	Write-Host 'Appending Configuration for Powerline to PowerShell Profile...'
+	#	$PowerlineProfile = @(
+	#		'# Dependencies for powerline',
+	#		'oh-my-posh --init --shell pwsh --config $env:POSH_THEMES_PATH/microverse-power.omp.json | Invoke-Expression'
+	#	)
+	#	if (-not(Select-String -Pattern $PowerlineProfile[0] -Path $PROFILE )) {
+	#		Write-Output 'Attempting to add the following lines to $PROFILE :' | Write-Debug
+	#		Write-Output $PowerlineProfile | Write-Debug
+	#		Add-Content -Path $PROFILE -Value $PowerlineProfile
+	#	}
+	#	# Install additional Powerline-related packages via chocolatey
+	#	# choco install -y poshgit
+	#	# choco install -y posh-github
+	#	# refreshenv
+	#} catch {
+	#	Write-Host  'Powerline failed to install' | Write-Warning
+	#	Write-Host ' See the log for details (' $Boxstarter.Log ').' | Write-Debug
+	#	# Move on if Powerline install fails due to error
+	#}
 
 	#--- Install & Configure the PSReadline Module
 	try {
