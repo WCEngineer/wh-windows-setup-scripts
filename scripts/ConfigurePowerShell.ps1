@@ -196,20 +196,20 @@ powershell -Command $ScriptBlock
 # Run the script block in PowerShell Core
 pwsh -Command $ScriptBlock
 
-$WindowsTerminalSettingsDir = (Join-Path $env:LOCALAPPDATA '\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState')
-$SymLinkPath = (Join-Path $env:USERPROFILE 'WindowsTerminalSettings')
-if (Test-Path $WindowsTerminalSettingsDir) {
-	if ((-not(Test-Path $SymLinkPath)) -or (-not(Get-Item $SymLinkPath | Where-Object Attributes -Match ReparsePoint))) {
-		New-Item -Path $SymLinkPath -ItemType SymbolicLink -Value $WindowsTerminalSettingsDir -Force -Verbose
-	}
-	$RemoteBackup = '\\files.nerdygriffin.net\backup\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\.git'
-	if ((Test-Path $RemoteBackup) -and (-not(Test-Path (Join-Path $WindowsTerminalSettingsDir '.git')))) {
-		$PrevLocation = Get-Location
-		Set-Location -Path $RemoteBackup
-		git fetch; git pull;
-		Copy-Item -Path $RemoteBackup -Destination (Join-Path $WindowsTerminalSettingsDir '.git')
-		Set-Location -Path $PrevLocation
-	}
-}
+# $WindowsTerminalSettingsDir = (Join-Path $env:LOCALAPPDATA '\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState')
+# $SymLinkPath = (Join-Path $env:USERPROFILE 'WindowsTerminalSettings')
+# if (Test-Path $WindowsTerminalSettingsDir) {
+# 	if ((-not(Test-Path $SymLinkPath)) -or (-not(Get-Item $SymLinkPath | Where-Object Attributes -Match ReparsePoint))) {
+# 		New-Item -Path $SymLinkPath -ItemType SymbolicLink -Value $WindowsTerminalSettingsDir -Force -Verbose
+# 	}
+# 	$RemoteBackup = '\\files.nerdygriffin.net\backup\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\.git'
+# 	if ((Test-Path $RemoteBackup) -and (-not(Test-Path (Join-Path $WindowsTerminalSettingsDir '.git')))) {
+# 		$PrevLocation = Get-Location
+# 		Set-Location -Path $RemoteBackup
+# 		git fetch; git pull;
+# 		Copy-Item -Path $RemoteBackup -Destination (Join-Path $WindowsTerminalSettingsDir '.git')
+# 		Set-Location -Path $PrevLocation
+# 	}
+# }
 
-[System.Environment]::SetEnvironmentVariable('PYTHONSTARTUP', (Join-Path $env:USERPROFILE '.pystartup'))
+# [System.Environment]::SetEnvironmentVariable('PYTHONSTARTUP', (Join-Path $env:USERPROFILE '.pystartup'))
