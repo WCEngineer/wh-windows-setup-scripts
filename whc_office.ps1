@@ -37,6 +37,11 @@ executeScript "RemoveDefaultApps.ps1";
 executeScript 'InstallWinGet.ps1';
 executeScript 'PackageManagement.ps1';
 
+executeScript 'ConfigureGit.ps1';
+
+#--- Configure Powershell Profile for PSReadline ---
+executeScript 'ConfigurePowerShell.ps1';
+
 #--- Setting up Chocolatey ---
 executeScript 'ChocolateyExtensions.ps1';
 executeScript 'ChocolateyGUI.ps1';
