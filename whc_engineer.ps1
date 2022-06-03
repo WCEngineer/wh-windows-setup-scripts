@@ -48,8 +48,8 @@ executeScript 'ConfigurePowerShell.ps1';
 executeScript 'ChocolateyExtensions.ps1';
 executeScript 'ChocolateyGUI.ps1';
 
-#--- Graphics Driver Support
-executeScript 'NvidiaGraphics.ps1';
+# #--- Graphics Driver Support
+# executeScript 'NvidiaGraphics.ps1';
 
 #--- Setting up programs for typical every-day use
 executeScript 'Browsers.ps1';
