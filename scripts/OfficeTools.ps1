@@ -1,6 +1,5 @@
 #--- PDF ---
 choco install -y adobereader
-# choco install -y foxitreader
 # choco install -y pdfsam
 
 #--- Office Suite ---
