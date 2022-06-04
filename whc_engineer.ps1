@@ -86,10 +86,6 @@ choco install -y visualstudio2017-workload-universal
 choco install -y visualstudio2017-workload-manageddesktop
 choco install -y visualstudio2017-workload-nativedesktop
 
-#--- Web Dev Tools ---
-code --install-extension msjsdiag.debugger-for-chrome
-code --install-extension msjsdiag.debugger-for-edge
-
 RefreshEnv;
 Start-Sleep -Seconds 1;
 
