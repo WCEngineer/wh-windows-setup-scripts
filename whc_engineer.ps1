@@ -35,13 +35,12 @@ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 #--- Setting up Windows ---
-executeScript "SystemConfiguration.ps1";
 executeScript "FileExplorerSettings.ps1";
 executeScript "RemoveDefaultApps.ps1";
 executeScript "CommonDevTools.ps1";
+executeScript 'DisableIPv6.ps1';
 
 #--- Package Manager ---
-executeScript 'InstallWinGet.ps1';
 executeScript 'PackageManagement.ps1';
 
 executeScript 'ConfigureGit.ps1';
@@ -64,9 +63,6 @@ executeScript 'FileAndStorageUtils.ps1'
 
 #--- Windows Privacy Settings ---
 executeScript 'PrivacySettings.ps1';
-
-#--- Whittet-Higgins Custom Setup ---
-executeScript 'DisableIPv6.ps1';
 
 #--- Tools ---
 #--- Installing VS and VS Code with Git

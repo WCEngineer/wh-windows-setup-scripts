@@ -37,9 +37,9 @@ Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 #--- Setting up Windows ---
 executeScript "FileExplorerSettings.ps1";
 executeScript "RemoveDefaultApps.ps1";
+executeScript 'DisableIPv6.ps1';
 
 #--- Package Manager ---
-executeScript 'InstallWinGet.ps1';
 executeScript 'PackageManagement.ps1';
 
 #--- Configure Powershell Profile for PSReadline ---
@@ -60,9 +60,6 @@ executeScript 'FileAndStorageUtils.ps1'
 
 #--- Windows Privacy Settings ---
 executeScript 'PrivacySettings.ps1';
-
-#--- Whittet-Higgins Custom Setup ---
-executeScript 'DisableIPv6.ps1';
 
 #--- reenabling critial items ---
 Enable-UAC
