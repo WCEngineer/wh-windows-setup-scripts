@@ -35,31 +35,33 @@ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 #--- Setting up Windows ---
+executeScript 'DisableIPv6.ps1';
 executeScript "FileExplorerSettings.ps1";
 executeScript "RemoveDefaultApps.ps1";
-executeScript 'DisableIPv6.ps1';
 
 #--- Package Manager ---
 executeScript 'PackageManagement.ps1';
-
-#--- Configure Powershell Profile for PSReadline ---
-executeScript 'ConfigurePowerShell.ps1';
 
 #--- Setting up Chocolatey ---
 executeScript 'ChocolateyExtensions.ps1';
 executeScript 'ChocolateyGUI.ps1';
 
-#--- Graphics Driver Support
-#executeScript 'NvidiaGraphics.ps1';
-
 #--- Setting up programs for typical every-day use
 executeScript 'Browsers.ps1';
 executeScript 'OfficeTools.ps1';
 executeScript 'PasswordManager.ps1';
-executeScript 'FileAndStorageUtils.ps1'
 
 #--- Windows Privacy Settings ---
 executeScript 'PrivacySettings.ps1';
+
+#--- Graphics Driver Support
+#executeScript 'NvidiaGraphics.ps1';
+
+#--- Administrative Tools ---
+executeScript 'FileAndStorageUtils.ps1'
+
+#--- Configure Powershell Profile for PSReadline ---
+executeScript 'ConfigurePowerShell.ps1';
 
 #--- reenabling critial items ---
 Enable-UAC

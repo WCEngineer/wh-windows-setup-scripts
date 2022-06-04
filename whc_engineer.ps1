@@ -35,34 +35,38 @@ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 #--- Setting up Windows ---
+executeScript 'DisableIPv6.ps1';
 executeScript "FileExplorerSettings.ps1";
 executeScript "RemoveDefaultApps.ps1";
 executeScript "CommonDevTools.ps1";
-executeScript 'DisableIPv6.ps1';
 
 #--- Package Manager ---
 executeScript 'PackageManagement.ps1';
-
-executeScript 'ConfigureGit.ps1';
-
-#--- Configure Powershell Profile for PSReadline ---
-executeScript 'ConfigurePowerShell.ps1';
 
 #--- Setting up Chocolatey ---
 executeScript 'ChocolateyExtensions.ps1';
 executeScript 'ChocolateyGUI.ps1';
 
-# #--- Graphics Driver Support
-# executeScript 'NvidiaGraphics.ps1';
-
 #--- Setting up programs for typical every-day use
 executeScript 'Browsers.ps1';
 executeScript 'OfficeTools.ps1';
 executeScript 'PasswordManager.ps1';
-executeScript 'FileAndStorageUtils.ps1'
 
 #--- Windows Privacy Settings ---
 executeScript 'PrivacySettings.ps1';
+
+# #--- Graphics Driver Support
+# executeScript 'NvidiaGraphics.ps1';
+
+#--- Administrative Tools ---
+executeScript 'FileAndStorageUtils.ps1'
+
+#--- Configure Powershell Profile for PSReadline ---
+executeScript 'ConfigurePowerShell.ps1';
+
+#--- William Collins Engineer Tools ---
+executeScript 'ConfigureGit.ps1';
+executeScript 'WCEngineer.ps1';
 
 #--- Tools ---
 #--- Installing VS and VS Code with Git
@@ -101,12 +105,6 @@ choco install -y nodejs-lts # Node.js LTS, Recommended for most users
 choco install -y visualstudio2017buildtools
 choco install -y visualstudio2017-workload-vctools
 choco install -y python2 # Node.js requires Python 2 to build native modules
-
-RefreshEnv;
-Start-Sleep -Seconds 1;
-
-#--- William Collins Engineer Tools ---
-executeScript 'WCEngineer.ps1';
 
 #--- reenabling critial items ---
 Enable-UAC
