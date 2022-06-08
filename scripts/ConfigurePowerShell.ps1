@@ -12,6 +12,9 @@ Set-ExecutionPolicy Bypass -Scope CurrentUser -Force -ErrorAction Continue
 refreshenv
 
 [ScriptBLock]$ScriptBlock = {
+	#--- Powershell Module Repository
+	Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+
 	#--- Update all modules ---
 	Write-Host 'Updating all modules...'
 	Update-Module -ErrorAction SilentlyContinue
