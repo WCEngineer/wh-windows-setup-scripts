@@ -35,8 +35,9 @@ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 #--- Setting up Windows ---
-executeScript 'NTP.ps1'
-xecuteScript 'DisableIPv6.ps1';
+executeScript 'SetTimeZone.ps1';
+executeScript 'NTP.ps1';
+executeScript 'DisableIPv6.ps1';
 executeScript "FileExplorerSettings.ps1";
 executeScript "RemoveDefaultApps.ps1";
 
