@@ -36,7 +36,7 @@ Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 #--- Setting up Windows ---
 executeScript 'SetTimeZone.ps1';
-executeScript 'NTP.ps1';
+executeScript 'SetNTP.ps1';
 executeScript 'DisableIPv6.ps1';
 executeScript "FileExplorerSettings.ps1";
 executeScript "RemoveDefaultApps.ps1";
