@@ -1,2 +1,1 @@
-# w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org"
-net time \\wh3.whc.lan /set /y
+w32tm /config /syncfromflags:manual /manualpeerlist:"wh3.whc.lan wh-pfsense.whc.lan wc-pfsense.wcc.lan pool.ntp.org"
