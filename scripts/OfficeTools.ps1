@@ -3,7 +3,7 @@ choco install -y adobereader
 # choco install -y pdfsam
 
 #--- Office Suite ---
-choco install -y openoffice
+# choco install -y openoffice
 # choco install -y libreoffice-fresh
 # choco install -y onlyoffice
-choco install -y thunderbird
+# choco install -y thunderbird
