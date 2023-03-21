@@ -61,6 +61,7 @@ executeScript 'PrivacySettings.ps1';
 
 #--- Administrative Tools ---
 executeScript 'FileAndStorageUtils.ps1'
+executeScript 'UrBackup.ps1'
 
 #--- Configure Powershell Profile for PSReadline ---
 executeScript 'ConfigurePowerShell.ps1';
