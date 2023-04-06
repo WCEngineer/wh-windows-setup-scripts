@@ -7,9 +7,9 @@ if (([Security.Principal.WindowsPrincipal] `
 	refreshenv
 }
 
-#--- Enable Powershell Script Execution
-Set-ExecutionPolicy Bypass -Scope CurrentUser -Force -ErrorAction Continue
-refreshenv
+# #--- Enable Powershell Script Execution
+# Set-ExecutionPolicy Bypass -Scope CurrentUser -Force -ErrorAction Continue
+# refreshenv
 
 [ScriptBLock]$ScriptBlock = {
 	#--- Powershell Module Repository
@@ -80,56 +80,6 @@ refreshenv
 			Add-Content -Path $PROFILE -Value $ChocolateyProfile
 		}
 	}
-
-	# #--- Import Boxstarter Modules
-	# Write-Host 'Appending Configuration for Boxstarter to PowerShell Profile...'
-	# $BoxstarterProfile = @(
-	# 	'# Boxstarter modules',
-	# 	'# Import the Chocolatey module first so that $Boxstarter properties',
-	# 	'# are initialized correctly and then import everything else.',
-	# 	'if (Test-Path("\\files.nerdygriffin.net\Boxstarter")) {',
-	# 	'	$BoxstarterInstall = "\\files.nerdygriffin.net\Boxstarter"',
-	# 	'} elseif (Test-Path("D:\Boxstarter")) {',
-	# 	'	$BoxstarterInstall = "D:\Boxstarter"',
-	# 	'}',
-	# 	'Import-Module $BoxstarterInstall\Boxstarter.Chocolatey\Boxstarter.Chocolatey.psd1 -DisableNameChecking -ErrorAction SilentlyContinue',
-	# 	'Resolve-Path $BoxstarterInstall\Boxstarter.*\*.psd1 |',
-	# 	'	% { Import-Module $_.ProviderPath -DisableNameChecking -ErrorAction SilentlyContinue }',
-	# 	'Import-Module $BoxstarterInstall\Boxstarter.Common\Boxstarter.Common.psd1 -Function Test-Admin'
-	# )
-	# if (-not(Select-String -Pattern $BoxstarterProfile[0] -Path $PROFILE)) {
-	# 	Write-Output 'Attempting to add the following lines to $PROFILE :' | Write-Debug
-	# 	Write-Output $BoxstarterProfile | Write-Debug
-	# 	Add-Content -Path $PROFILE -Value $BoxstarterProfile
-	# }
-
-	# #--- Install the Pipeworks Module
-	# try {
-	# 	Write-Host 'Installing Pipeworks -- [CLI Tools for PowerShell]'
-	# 	Write-Host 'Description: PowerShell Pipeworks is a framework for writing Sites and Software Services in Windows PowerShell modules.'
-	# 	if (-not(Get-Module -ListAvailable -Name Pipeworks)) {
-	# 		Install-Module -Name Pipeworks -Scope CurrentUser -AllowClobber -SkipPublisherCheck -Force -Verbose
-	# 	} else { Write-Host "Module 'Pipeworks' already installed" }
-	# 	refreshenv
-	# } catch {
-	# 	Write-Host 'Pipeworks failed to install' | Write-Warning
-	# 	Write-Host ' See the log for details (' $Boxstarter.Log ').' | Write-Debug
-	# 	# Move on if Pipeworks install fails due to errors
-	# }
-
-	# #--- Install the CredentialManager Module
-	# try {
-	# 	Write-Host 'Installing CredentialManager'
-	# 	Write-Host 'Description: Provides access to credentials in the Windows Credential Manager.'
-	# 	if (-not(Get-Module -ListAvailable -Name CredentialManager)) {
-	# 		Install-Module -Name CredentialManager
-	# 	} else { Write-Host "Module 'CredentialManager' already installed" }
-	# 	refreshenv
-	# } catch {
-	# 	Write-Host  'CredentialManager failed to install' | Write-Warning
-	# 	Write-Host ' See the log for details (' $Boxstarter.Log ').' | Write-Debug
-	# 	# Move on if CredentialManager install fails due to errors
-	# }
 
 	#--- Update all modules ---
 	Write-Host 'Updating all modules...'
