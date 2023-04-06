@@ -12,23 +12,23 @@ function removeApp {
 	Param ([string]$appName)
 	Write-Output "Trying to remove $appName"
 	Get-AppxPackage $appName -AllUsers | Remove-AppxPackage
-	Get-AppXProvisionedPackage -Online | Where DisplayName -like $appName | Remove-AppxProvisionedPackage -Online
+	Get-AppXProvisionedPackage -Online | Where-Object DisplayName -Like $appName | Remove-AppxProvisionedPackage -Online
 }
 
 $applicationList = @(
-	"Microsoft.BingFinance"
+	# "Microsoft.BingFinance"
 	"Microsoft.3DBuilder"
-	"Microsoft.BingNews"
-	"Microsoft.BingSports"
-	"Microsoft.BingWeather"
+	# "Microsoft.BingNews"
+	# "Microsoft.BingSports"
+	# "Microsoft.BingWeather"
 	"Microsoft.CommsPhone"
-	"Microsoft.Getstarted"
+	# "Microsoft.Getstarted"
 	"Microsoft.WindowsMaps"
 	"*MarchofEmpires*"
-	"Microsoft.GetHelp"
+	# "Microsoft.GetHelp"
 	"Microsoft.Messaging"
 	"*Minecraft*"
-	"Microsoft.MicrosoftOfficeHub"
+	# "Microsoft.MicrosoftOfficeHub"
 	"Microsoft.OneConnect"
 	"Microsoft.WindowsPhone"
 	"Microsoft.WindowsSoundRecorder"
@@ -44,8 +44,8 @@ $applicationList = @(
 	"Microsoft.Print3D"
 	"*Autodesk*"
 	"*BubbleWitch*"
-    	"king.com*"
-    	"G5*"
+	"king.com*"
+	"G5*"
 	"*Dell*"
 	"*Facebook*"
 	"*Keeper*"
@@ -59,5 +59,5 @@ $applicationList = @(
 );
 
 foreach ($app in $applicationList) {
-    removeApp $app
+	removeApp $app
 }
