@@ -1,4 +1,5 @@
-choco install -y blender
+# choco install -y blender
 choco install -y dwgtrueview
+choco install -y edrawings-viewer
 # choco install -y fritzing
-choco install -y inkscape
+# choco install -y inkscape
