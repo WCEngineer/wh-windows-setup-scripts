@@ -80,14 +80,13 @@ executeScript 'WCEngineer.ps1';
 # visualstudio2017professional
 # visualstudio2017enterprise
 
-choco install -y visualstudio2017community --package-parameters="'--add Microsoft.VisualStudio.Component.Git'"
+choco install -y visualstudio2022community --package-parameters="'--add Microsoft.VisualStudio.Component.Git'"
 Update-SessionEnvironment #refreshing env due to Git install
 
-#--- UWP Workload and installing Windows Template Studio ---
-# choco install -y visualstudio2017-workload-azure
-choco install -y visualstudio2017-workload-universal
-choco install -y visualstudio2017-workload-manageddesktop
-choco install -y visualstudio2017-workload-nativedesktop
+#--- VS Workloads for R.H. ---
+choco install -y visualstudio2022-workload-universal
+choco install -y visualstudio2022-workload-manageddesktop
+choco install -y visualstudio2022-workload-nativedesktop
 
 RefreshEnv;
 Start-Sleep -Seconds 1;
