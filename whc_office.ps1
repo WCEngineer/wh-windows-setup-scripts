@@ -51,12 +51,6 @@ executeScript 'PasswordManager.ps1';
 #--- Windows Privacy Settings ---
 executeScript 'PrivacySettings.ps1';
 
-#--- Administrative Tools ---
-# executeScript 'UrBackup.ps1'
-
-#--- Configure Powershell Profile for PSReadline ---
-executeScript 'ConfigurePowerShell.ps1';
-
 #--- reenabling critial items ---
 Enable-UAC
 Enable-MicrosoftUpdate
