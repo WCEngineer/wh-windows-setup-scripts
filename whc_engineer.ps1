@@ -75,6 +75,9 @@ executeScript 'WCEngineer.ps1';
 choco install -y visualstudio2022community --package-parameters="'--add Microsoft.VisualStudio.Component.Git'"
 Update-SessionEnvironment #refreshing env due to Git install
 
+RefreshEnv;
+Start-Sleep -Seconds 1;
+
 #--- VS Workloads for desktop app development ---
 choco install -y visualstudio2022-workload-universal
 choco install -y visualstudio2022-workload-manageddesktop
