@@ -55,9 +55,6 @@ executeScript 'PasswordManager.ps1';
 #--- Windows Privacy Settings ---
 executeScript 'PrivacySettings.ps1';
 
-# #--- Graphics Driver Support
-# executeScript 'NvidiaGraphics.ps1';
-
 #--- Administrative Tools ---
 # executeScript 'UrBackup.ps1'
 
