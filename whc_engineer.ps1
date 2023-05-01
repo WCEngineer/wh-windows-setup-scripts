@@ -45,10 +45,6 @@ executeScript "CommonDevTools.ps1";
 #--- Package Manager ---
 executeScript 'PackageManagement.ps1';
 
-#--- Setting up Chocolatey ---
-# executeScript 'ChocolateyExtensions.ps1';
-# executeScript 'ChocolateyGUI.ps1';
-
 #--- Setting up programs for typical every-day use
 executeScript 'Browsers.ps1';
 executeScript 'OfficeTools.ps1';
