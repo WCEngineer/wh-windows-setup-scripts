@@ -29,21 +29,20 @@ function executeScript {
 	Start-Sleep -Seconds 1;
 }
 
-choco config set --name="commandExecutionTimeoutSeconds" --value="14400"
-
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 
 #--- Powershell Module Repository
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+
+#--- Package Manager ---
+executeScript 'ConfigureChocolatey.ps1';
+executeScript 'PackageManagement.ps1';
 
 #--- Setting up Windows ---
 executeScript 'SetTimeZone.ps1';
 executeScript 'SetNTP.ps1';
 executeScript 'DisableIPv6.ps1';
 executeScript "RemoveDefaultApps.ps1";
-
-#--- Package Manager ---
-executeScript 'PackageManagement.ps1';
 
 #--- Setting up programs for typical every-day use
 executeScript 'Browsers.ps1';
