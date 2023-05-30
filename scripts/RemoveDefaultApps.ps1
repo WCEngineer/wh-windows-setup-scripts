@@ -16,6 +16,7 @@ function removeApp {
 }
 
 $applicationList = @(
+	"Clipchamp.Clipchamp"
 	# "Microsoft.BingFinance"
 	"Microsoft.3DBuilder"
 	# "Microsoft.BingNews"
@@ -23,7 +24,7 @@ $applicationList = @(
 	# "Microsoft.BingWeather"
 	"Microsoft.CommsPhone"
 	# "Microsoft.Getstarted"
-	"Microsoft.WindowsMaps"
+	# "Microsoft.WindowsMaps"
 	"*MarchofEmpires*"
 	# "Microsoft.GetHelp"
 	"Microsoft.Messaging"
@@ -31,20 +32,20 @@ $applicationList = @(
 	# "Microsoft.MicrosoftOfficeHub"
 	"Microsoft.OneConnect"
 	"Microsoft.WindowsPhone"
-	"Microsoft.WindowsSoundRecorder"
-	"*Solitaire*"
-	"Microsoft.MicrosoftStickyNotes"
-	"Microsoft.Office.Sway"
+	# "Microsoft.WindowsSoundRecorder"
+	# "*Solitaire*"
+	# "Microsoft.MicrosoftStickyNotes"
+	# "Microsoft.Office.Sway"
 	"Microsoft.XboxApp"
 	"Microsoft.XboxIdentityProvider"
 	"Microsoft.XboxGameOverlay"
 	"Microsoft.XboxGamingOverlay"
 	"Microsoft.ZuneMusic"
 	"Microsoft.ZuneVideo"
-	"Microsoft.NetworkSpeedTest"
+	# "Microsoft.NetworkSpeedTest"
 	"Microsoft.FreshPaint"
 	"Microsoft.Print3D"
-	"Microsoft.People*"
+	# "Microsoft.People*"
 	"Microsoft.Microsoft3DViewer"
 	"Microsoft.MixedReality.Portal*"
 	"*Skype*"
@@ -62,6 +63,9 @@ $applicationList = @(
 	"*.EclipseManager"
 	"ActiproSoftwareLLC.562882FEEB491" # Code Writer
 	"*.AdobePhotoshopExpress"
+	"*PicsArt*"
+	"*Instagram*"
+	"*Spotify*"
 );
 
 foreach ($app in $applicationList) {
