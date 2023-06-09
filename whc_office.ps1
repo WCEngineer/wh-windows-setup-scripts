@@ -49,9 +49,6 @@ executeScript 'Browsers.ps1';
 executeScript 'OfficeTools.ps1';
 executeScript 'PasswordManager.ps1';
 
-#--- Windows Privacy Settings ---
-executeScript 'PrivacySettings.ps1';
-
 #--- reenabling critial items ---
 Enable-UAC
 Enable-MicrosoftUpdate
