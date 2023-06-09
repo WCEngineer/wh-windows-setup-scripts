@@ -53,11 +53,12 @@ executeScript 'PasswordManager.ps1';
 #--- Administrative Tools ---
 executeScript 'FileAndStorageUtils.ps1'
 
+executeScript 'ConfigureGit.ps1';
+
 #--- Configure Powershell Profile for PSReadline ---
 executeScript 'ConfigurePowerShell.ps1';
 
 #--- William Collins Engineer Tools ---
-executeScript 'ConfigureGit.ps1';
 executeScript 'WCEngineer.ps1';
 
 #--- Tools ---
