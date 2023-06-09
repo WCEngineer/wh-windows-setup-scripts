@@ -51,6 +51,7 @@ executeScript 'OfficeTools.ps1';
 executeScript 'PasswordManager.ps1';
 
 #--- Administrative Tools ---
+executeScript 'RemoteServerAdministrationTools.ps1';
 executeScript 'FileAndStorageUtils.ps1'
 
 executeScript 'ConfigureGit.ps1';
