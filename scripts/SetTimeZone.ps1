@@ -1,1 +1,1 @@
-tzutil /s "Eastern Standard Time"
+Set-TimeZone -Id "Eastern Standard Time"
