@@ -60,6 +60,7 @@ executeScript 'ConfigureGit.ps1';
 executeScript 'ConfigurePowerShell.ps1';
 
 #--- William Collins Engineer Tools ---
+executeScript '3DPrinting.ps1';
 executeScript 'WCEngineer.ps1';
 
 #--- Tools ---
