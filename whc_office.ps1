@@ -41,7 +41,7 @@ executeScript 'PackageManagement.ps1';
 #--- Setting up Windows ---
 executeScript 'SetTimeZone.ps1';
 executeScript 'SetNTP.ps1';
-executeScript 'DisableIPv6.ps1';
+executeScript 'EnableIPv6.ps1';
 executeScript "RemoveDefaultApps.ps1";
 
 #--- Setting up programs for typical every-day use
