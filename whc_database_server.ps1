@@ -1,6 +1,6 @@
 # Description: Boxstarter Script
 # Author: Microsoft
-# Common settings for Whittet-Higgins office workstations
+# Common settings for Whittet-Higgins database servers
 
 If ($Boxstarter.StopOnPackageFailure) { $Boxstarter.StopOnPackageFailure = $false }
 
@@ -42,12 +42,18 @@ executeScript 'PackageManagement.ps1';
 executeScript 'SetTimeZone.ps1';
 executeScript 'SetNTPDomainMember.ps1';
 executeScript 'EnableIPv6.ps1';
-executeScript "RemoveDefaultApps.ps1";
+executeScript "CommonDevTools.ps1";
 
 #--- Setting up programs for typical every-day use
-executeScript 'Browsers.ps1';
-executeScript 'OfficeTools.ps1';
 executeScript 'PasswordManager.ps1';
+
+#--- Administrative Tools ---
+executeScript 'FileAndStorageUtils.ps1'
+
+executeScript 'ConfigureGit.ps1';
+
+#--- Configure Powershell Profile for PSReadline ---
+executeScript 'ConfigurePowerShell.ps1';
 
 #--- reenabling critial items ---
 Enable-UAC

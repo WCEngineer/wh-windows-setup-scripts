@@ -40,7 +40,7 @@ executeScript 'PackageManagement.ps1';
 
 #--- Setting up Windows ---
 executeScript 'SetTimeZone.ps1';
-executeScript 'SetNTP.ps1';
+executeScript 'SetNTPDomainMember.ps1';
 executeScript 'EnableIPv6.ps1';
 executeScript "RemoveDefaultApps.ps1";
 executeScript "CommonDevTools.ps1";

@@ -40,12 +40,14 @@ Before you begin, please read the [Legal](#Legal) section.
 
 To run a recipe script, click a link in the table below from your target machine. This will download the Boxstarter one-click application, and prompt you for Boxstarter to run with Administrator privileges (which it needs to do its job). Clicking yes in this dialog will cause the recipe to begin. You can then leave the job unattended and come back when it's finished.
 
-| Click link to run                                                                                                                                                      | Description                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| <a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Office</a>     | Automated Windows setup for office workstations              |
-| <a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Shipping</a>   | Automated Windows setup for shipping department workstations |
-| <a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Gauge Room</a> | Automated Windows setup for gauge room workstations          |
-| <a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_engineer.ps1'>Whittet-Higgins Engineer</a> | Automated Windows setup for engineering workstations         |
+| Click link to run                                                                                                                                                                        | Description                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| <a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Office</a>                       | Automated Windows setup for office workstations              |
+| <a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Shipping</a>                     | Automated Windows setup for shipping department workstations |
+| <a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_office.ps1'>Whittet-Higgins Gauge Room</a>                   | Automated Windows setup for gauge room workstations          |
+| <a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_engineer.ps1'>Whittet-Higgins Engineer</a>                   | Automated Windows setup for engineering workstations         |
+| <a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_database_server.ps1'>Whittet-Higgins Database Server</a>     | Automated Windows setup for database servers                 |
+| <a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/WCEngineer/wh-windows-setup-scripts/master/whc_domain_controller.ps1'>Whittet-Higgins Domain Controller</a> | Automated Windows setup for domain controllers               |
 
 **Notes:**
 
