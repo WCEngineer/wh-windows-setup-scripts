@@ -62,6 +62,19 @@ if (([Security.Principal.WindowsPrincipal] `
 		# Move on if PSReadline install fails due to errors
 	}
 
+	#--- Install the PSWindowsUpdate Module
+	try {
+		Write-Host 'Installing PSWindowsUpdate'
+		if (-not(Get-Module -ListAvailable -Name PSWindowsUpdate)) {
+			Install-Module -Name PSWindowsUpdate -AllowClobber -SkipPublisherCheck -Force -Verbose
+		} else { Write-Host "Module 'PSWindowsUpdate' already installed" }
+		refreshenv
+	} catch {
+		Write-Host 'PSWindowsUpdate failed to install' | Write-Warning
+		Write-Host ' See the log for details (' $Boxstarter.Log ').' | Write-Debug
+		# Move on if PSWindowsUpdate install fails due to errors
+	}
+
 	#--- Import Chocolatey Modules
 	if (([Security.Principal.WindowsPrincipal] `
 				[Security.Principal.WindowsIdentity]::GetCurrent() `
@@ -87,7 +100,9 @@ if (([Security.Principal.WindowsPrincipal] `
 } # End of $ScriptBlock
 
 # Run the script block in PowerShell
+Write-Host 'Configuring Windows PowerShell...' -ForegroundColor 'Green'
 powershell -Command $ScriptBlock
 
 # Run the script block in PowerShell Core
+Write-Host 'Configuring PowerShell Core...' -ForegroundColor 'Green'
 pwsh -Command $ScriptBlock
