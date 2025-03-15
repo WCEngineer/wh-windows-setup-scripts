@@ -32,4 +32,3 @@ git config --global alias.pl pull
 # Make a folder for my GitHub repos and make SymbolicLinks to it
 $UserGitHubPath = (Join-Path $env:USERPROFILE 'GitHub')
 if (-not(Test-Path $UserGitHubPath)) { New-Item -Path $UserGitHubPath -ItemType Directory }
-if (-not(Test-Path 'C:\GitHub')) { New-Item -Path 'C:\GitHub' -ItemType SymbolicLink -Value $UserGitHubPath }
