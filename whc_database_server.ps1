@@ -40,8 +40,6 @@ executeScript 'PackageManagement.ps1';
 
 #--- Setting up Windows ---
 Set-TimeZone -Id "Eastern Standard Time"
-executeScript 'SetNTPDomainMember.ps1';
-executeScript 'EnableIPv6.ps1';
 executeScript "CommonDevTools.ps1";
 
 #--- Configure Git ---
