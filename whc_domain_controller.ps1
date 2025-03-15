@@ -39,7 +39,7 @@ executeScript 'ConfigureChocolatey.ps1';
 executeScript 'PackageManagement.ps1';
 
 #--- Setting up Windows ---
-executeScript 'SetTimeZone.ps1';
+Set-TimeZone -Id "Eastern Standard Time"
 executeScript 'SetNTPDomainController.ps1';
 executeScript 'EnableIPv6.ps1';
 executeScript "CommonDevTools.ps1";
