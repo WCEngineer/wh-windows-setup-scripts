@@ -53,6 +53,7 @@ executeScript 'PasswordManager.ps1';
 
 #--- Administrative Tools ---
 executeScript 'FileAndStorageUtils.ps1'
+executeScript 'SQLServerManagementStudio.ps1'
 
 #--- reenabling critial items ---
 Enable-UAC
