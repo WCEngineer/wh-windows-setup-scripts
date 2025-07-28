@@ -8,10 +8,13 @@ if (([Security.Principal.WindowsPrincipal] `
 }
 
 # #--- Enable Powershell Script Execution
+#Uncomment this line if this setting is not managed by Group Policy
 # Set-ExecutionPolicy Bypass -Scope CurrentUser -Force -ErrorAction Continue
 # refreshenv
 
 [ScriptBLock]$ScriptBlock = {
+	Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -ErrorAction SilentlyContinue
+
 	#--- Powershell Module Repository
 	Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
@@ -57,7 +60,7 @@ if (([Security.Principal.WindowsPrincipal] `
 			Add-Content -Path $PROFILE -Value $PSReadlineProfile
 		}
 	} catch {
-		Write-Host  'PSReadline failed to install' | Write-Warning
+		Write-Host 'PSReadline failed to install' | Write-Warning
 		Write-Host ' See the log for details (' $Boxstarter.Log ').' | Write-Debug
 		# Move on if PSReadline install fails due to errors
 	}
