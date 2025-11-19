@@ -1,29 +1,108 @@
+function Safe-RefreshEnv {
+	try {
+		$output = RefreshEnv 2>&1 | Out-String
+	} catch {
+		$output = $_ | Out-String
+	}
+
+	if ($output -and $output -match 'Import-Module') {
+		try { Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1" -ErrorAction SilentlyContinue } catch {}
+		# After importing the Chocolatey profile, try refreshenv again and display its output
+		try {
+			$retryOutput = RefreshEnv 2>&1 | Out-String
+		} catch {
+			$retryOutput = $_ | Out-String
+		}
+		if ($retryOutput) { Write-Host $retryOutput.Trim() }
+	} else {
+		if ($output) { Write-Host $output.Trim() }
+	}
+
+	return $null
+}
+
 if (([Security.Principal.WindowsPrincipal] `
 			[Security.Principal.WindowsIdentity]::GetCurrent() `
 	).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
 	#--- PowerShell ---
 	choco upgrade -y powershell
 	choco upgrade -y powershell-core
-	refreshenv
+	choco upgrade -y winget
+	Safe-RefreshEnv
 }
 
-# #--- Enable Powershell Script Execution
-#Uncomment this line if this setting is not managed by Group Policy
-# Set-ExecutionPolicy Bypass -Scope CurrentUser -Force -ErrorAction Continue
-# refreshenv
+#--- Enable Powershell Script Execution
+try { Set-ExecutionPolicy Bypass -Scope CurrentUser -Force } catch {} # Do nothing if blocked by Group Policy
 
-[ScriptBLock]$ScriptBlock = {
-	Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -ErrorAction SilentlyContinue
+Safe-RefreshEnv
+
+[ScriptBlock]$ScriptBlock = {
+	function Safe-RefreshEnv {
+		try {
+			$output = RefreshEnv 2>&1 | Out-String
+		} catch {
+			$output = $_ | Out-String
+		}
+
+		if ($output -and $output -match 'Import-Module') {
+			try { Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1" -ErrorAction SilentlyContinue } catch {}
+			# After importing the Chocolatey profile, try refreshenv again and display its output
+			try {
+				$retryOutput = RefreshEnv 2>&1 | Out-String
+			} catch {
+				$retryOutput = $_ | Out-String
+			}
+			if ($retryOutput) { Write-Host $retryOutput.Trim() }
+		} else {
+			if ($output) { Write-Host $output.Trim() }
+		}
+
+		return $null
+	}
+
+	#--- Enable Powershell Script Execution
+	try {
+		Set-ExecutionPolicy Bypass -Scope CurrentUser -Force
+	} catch {
+		try {
+			Set-ExecutionPolicy Bypass -Scope Process -Force
+		} catch {
+			# Do nothing if blocked by Group Policy
+		}
+	}
+
+	Safe-RefreshEnv
+
+	if ((Get-CimInstance Win32_OperatingSystem).BuildNumber -lt 17763) {
+		[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+	} else {
+		[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::SystemDefault
+	}
+
+	if (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) -and (Get-Command -Name Install-PackageProvider -ErrorAction SilentlyContinue)) {
+		Write-Host 'Installing NuGet Package Provider...'
+		try {
+			Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -ErrorAction SilentlyContinue
+		} catch {}
+	}
 
 	#--- Powershell Module Repository
-	Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+	if (Get-Command -Name Set-PSRepository -ErrorAction SilentlyContinue) {
+		try {
+			Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted -ErrorAction SilentlyContinue
+		} catch {}
+	}
 
-	#--- Update all modules ---
-	Write-Host 'Updating all modules...'
-	Update-Module -ErrorAction SilentlyContinue
-	refreshenv
+	if (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+		#--- Update all modules ---
+		Write-Host 'Updating all modules...'
+		Update-Module -ErrorAction SilentlyContinue
+	}
+
+	Safe-RefreshEnv
 	Start-Sleep -Seconds 1;
 
+	#--- Ensure PowerShell Profile Exists
 	if (-not(Test-Path $PROFILE)) {
 		Write-Verbose "`$PROFILE does not exist at $PROFILE`nCreating new `$PROFILE..."
 		New-Item -Path $PROFILE -ItemType File -Force
@@ -44,7 +123,7 @@ if (([Security.Principal.WindowsPrincipal] `
 		if (-not(Get-Module -ListAvailable -Name PSReadLine)) {
 			Install-Module -Name PSReadLine -Scope CurrentUser -AllowClobber -SkipPublisherCheck -Force -Verbose
 		} else { Write-Host "Module 'PSReadLine' already installed" }
-		refreshenv
+		Safe-RefreshEnv
 		Write-Host 'Appending Configuration for PSReadLine to PowerShell Profile...'
 		$PSReadlineProfile = @(
 			'# Customize PSReadline to make PowerShell behave more like Bash',
@@ -71,7 +150,7 @@ if (([Security.Principal.WindowsPrincipal] `
 		if (-not(Get-Module -ListAvailable -Name PSWindowsUpdate)) {
 			Install-Module -Name PSWindowsUpdate -AllowClobber -SkipPublisherCheck -Force -Verbose
 		} else { Write-Host "Module 'PSWindowsUpdate' already installed" }
-		refreshenv
+		Safe-RefreshEnv
 	} catch {
 		Write-Host 'PSWindowsUpdate failed to install' | Write-Warning
 		Write-Host ' See the log for details (' $Boxstarter.Log ').' | Write-Debug
@@ -86,9 +165,7 @@ if (([Security.Principal.WindowsPrincipal] `
 		$ChocolateyProfile = @(
 			'# Chocolatey profile',
 			'$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"',
-			'if (Test-Path($ChocolateyProfile)) {'
-			'    Import-Module "$ChocolateyProfile"'
-			'}'
+			'if (Test-Path($ChocolateyProfile)) { Import-Module "$ChocolateyProfile" }'
 		)
 		if (-not(Select-String -Pattern $ChocolateyProfile[0] -Path $PROFILE)) {
 			Write-Output 'Attempting to add the following lines to $PROFILE :' | Write-Debug
@@ -97,9 +174,14 @@ if (([Security.Principal.WindowsPrincipal] `
 		}
 	}
 
-	#--- Update all modules ---
-	Write-Host 'Updating all modules...'
-	Update-Module -ErrorAction SilentlyContinue
+	if (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+		#--- Update all modules ---
+		Write-Host 'Updating all modules...'
+		Update-Module -ErrorAction SilentlyContinue
+	}
+
+	#--- Reset default security protocol ---
+	[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::SystemDefault
 } # End of $ScriptBlock
 
 # Run the script block in PowerShell
