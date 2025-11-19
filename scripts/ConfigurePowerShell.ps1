@@ -174,6 +174,8 @@ Safe-RefreshEnv
 		}
 	}
 
+	Get-Content -Path $PROFILE | Set-Content -Path (Join-Path (Split-Path -Path $PROFILE -Parent) "Microsoft.VSCode_profile.ps1")
+
 	if (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
 		#--- Update all modules ---
 		Write-Host 'Updating all modules...'
