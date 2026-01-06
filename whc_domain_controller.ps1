@@ -2,7 +2,7 @@
 # Author: Microsoft
 # Common settings for Whittet-Higgins AD-DC servers
 
-If ($Boxstarter.StopOnPackageFailure) { $Boxstarter.StopOnPackageFailure = $false }
+if ($Boxstarter.StopOnPackageFailure) { $Boxstarter.StopOnPackageFailure = $false }
 
 Disable-UAC
 
@@ -20,7 +20,7 @@ Write-Host "helper script base URI is $helperUri"
 function drawLine { Write-Host '------------------------------' }
 
 function executeScript {
-	Param ([string]$script)
+	param ([string]$script)
 	drawLine;
 	Write-Host "executing $helperUri/$script ..."
 	Invoke-Expression ((New-Object net.webclient).DownloadString("$helperUri/$script")) -ErrorAction Continue
@@ -49,7 +49,7 @@ executeScript 'ConfigureGit.ps1';
 executeScript 'ConfigurePowerShell.ps1';
 
 #--- Setting up programs for typical every-day use
-executeScript 'PasswordManager.ps1';
+# executeScript 'PasswordManager.ps1';
 
 #--- Administrative Tools ---
 executeScript 'FileAndStorageUtils.ps1'
