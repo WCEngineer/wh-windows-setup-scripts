@@ -102,6 +102,9 @@ Update-EnvironmentVariables
 	Update-EnvironmentVariables
 	Start-Sleep -Seconds 1;
 
+	#DEBUG: Delete PowerShell Profile for testing purposes
+	Remove-Item -Path $PROFILE -Force -ErrorAction SilentlyContinue
+
 	#--- Ensure PowerShell Profile Exists
 	if (-not(Test-Path $PROFILE)) {
 		Write-Verbose "`$PROFILE does not exist at $PROFILE`nCreating new `$PROFILE..."
