@@ -11,4 +11,4 @@ try {
 }
 
 #--- Office Suite ---
-winget install --id=ONLYOFFICE.DesktopEditors --exact --silent --accept-package-agreements --accept-source-agreements
+# winget install --id=ONLYOFFICE.DesktopEditors --exact --silent --accept-package-agreements --accept-source-agreements
