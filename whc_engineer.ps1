@@ -52,7 +52,6 @@ executeScript 'ConfigurePowerShell.ps1';
 #--- Setting up programs for typical every-day use
 executeScript 'Browsers.ps1';
 executeScript 'OfficeTools.ps1';
-# executeScript 'PasswordManager.ps1';
 
 #--- Administrative Tools ---
 executeScript 'RemoteServerAdministrationTools.ps1';

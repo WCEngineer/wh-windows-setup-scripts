@@ -48,9 +48,6 @@ executeScript 'ConfigureGit.ps1';
 #--- Configure Powershell Profile for PSReadline ---
 executeScript 'ConfigurePowerShell.ps1';
 
-#--- Setting up programs for typical every-day use
-# executeScript 'PasswordManager.ps1';
-
 #--- Administrative Tools ---
 executeScript 'FileAndStorageUtils.ps1'
 
